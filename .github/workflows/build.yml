@@ -1,0 +1,24 @@
+name: Build LibWrt
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: install rust
+      uses: dtolnay/rust-toolchain@stable
+      with:
+        targets: aarch64-unknown-linux-musl
+
+    - name: 打印信息
+      run: |
+        rustc -V
+        rustup target list
+
+    - name: 克隆代码
+      run: |
+        git clone --depth 1 https://github.com/dani-garcia/vaultwarden.git vaultwarden

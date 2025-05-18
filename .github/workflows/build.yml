@@ -1,4 +1,4 @@
-name: Build LibWrt
+name: 构建 Vaultwarden
 
 on:
   repository_dispatch:
@@ -22,3 +22,8 @@ jobs:
     - name: 克隆代码
       run: |
         git clone --depth 1 https://github.com/dani-garcia/vaultwarden.git vaultwarden
+
+    - name: 执行编译
+      run: |
+        cd vaultwarden
+        cargo build -r --target aarch64-unknown-linux-musl

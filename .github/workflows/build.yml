@@ -22,4 +22,5 @@ jobs:
       run: |
         cd vaultwarden
         rustup target add aarch64-unknown-linux-musl
+        rustup default aarch64-unknown-linux-musl
         cargo build -r --target aarch64-unknown-linux-musl

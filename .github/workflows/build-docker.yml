@@ -12,6 +12,10 @@ jobs:
 
     - name: 克隆代码
       run: git clone --depth 1 https://github.com/dani-garcia/vaultwarden.git vaultwarden
+
+    - name: 修改代码
+      working-directory: vaultwarden
+      run: sed -i 's/"linux\/amd64", "linux\/arm64", "linux\/arm\/v7", "linux\/arm\/v6"/"linux\/arm64"/g' ./docker/DockerSettings.yaml
         
     - name: 执行编译
       working-directory: vaultwarden

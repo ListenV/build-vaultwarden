@@ -28,4 +28,5 @@ jobs:
         
     - name: 执行编译
       working-directory: vaultwarden
-      run: cargo build -r --target aarch64-unknown-linux-musl --features sqlite
+      run: OPENSSL_DIR=/usr/include OPENSSL_LIB_DIR=/usr/lib OPENSSL_INCLUDE_DIR=/usr/include \
+           cargo build -r --target aarch64-unknown-linux-musl --features sqlite

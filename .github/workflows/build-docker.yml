@@ -21,3 +21,15 @@ jobs:
       working-directory: vaultwarden
       #run: docker build -t vaultwarden -f ./docker/Dockerfile.alpine --build-arg DB=sqlite,enable_mimalloc .
       run: docker build -t vaultwarden -f ./docker/Dockerfile.debian --build-arg DB=sqlite .
+
+    - name: 查看镜像
+      run: |
+        docker images
+        mkdir -pv img
+        docker save vaultwarden > ./img/vaultwarden.tar
+
+    - name: 上传镜像
+      uses: actions/upload-artifact@main
+      if: ${{ !cancelled() }}
+      with:
+        path: ./img

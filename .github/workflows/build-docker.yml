@@ -19,4 +19,5 @@ jobs:
         
     - name: 执行编译
       working-directory: vaultwarden
-      run: docker build -t vaultwarden -f ./docker/Dockerfile.alpine --build-arg DB=sqlite,enable_mimalloc .
+      #run: docker build -t vaultwarden -f ./docker/Dockerfile.alpine --build-arg DB=sqlite,enable_mimalloc .
+      run: docker build -t vaultwarden -f ./docker/Dockerfile.debian --build-arg DB=sqlite,enable_mimalloc .

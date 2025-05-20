@@ -15,12 +15,12 @@ jobs:
         targets: aarch64-unknown-linux-musl
 
     - name: 克隆代码
-      run: |
-        git clone --depth 1 https://github.com/dani-garcia/vaultwarden.git vaultwarden
+      run: git clone --depth 1 https://github.com/dani-garcia/vaultwarden.git vaultwarden
 
+    - name: 安装aarch64工具链
+      working-directory: vaultwarden
+      run: rustup target add aarch64-unknown-linux-musl&&rustup default aarch64-unknown-linux-musl
+        
     - name: 执行编译
-      run: |
-        cd vaultwarden
-        rustup target add aarch64-unknown-linux-musl
-        rustup default aarch64-unknown-linux-musl
-        cargo build -r --target aarch64-unknown-linux-musl
+      working-directory: vaultwarden
+      run: cargo build -r --target aarch64-unknown-linux-musl

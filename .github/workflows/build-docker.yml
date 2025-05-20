@@ -1,4 +1,4 @@
-name: 构建 Vaultwarden
+name: 构建 Vaultwarden Docker
 
 on:
   repository_dispatch:
